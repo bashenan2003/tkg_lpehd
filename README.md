@@ -6,7 +6,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1.2-red)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-TKG-LPEHD is a modular framework for temporal knowledge graph reasoning (TKGR) that deeply integrates rule-based reasoning, graph-based neural reasoning, and large language models. It employs LLM-guided three-dimensional relational path sampling, adaptive rule evolution with temporal validity assessment, and dynamic weight fusion to achieve state-of-the-art reasoning accuracy with strong interpretability.
+TKG-LPEHD is a modular framework for temporal knowledge graph reasoning (TKGR) that deeply integrates rule-based reasoning, graph-based neural reasoning, and large language models. It employs LLM-guided three-dimensional relational path sampling, adaptive rule evolution with temporal validity assessment, and dynamic weight fusion to achieve state-of-the-art reasoning accuracy with strong interpretability. To deploy and run this framework, you need to create a data_files folder in the root directory and add datasets that meet the format requirements in the folder. Besides, you need to download SBERT semantic embeddings yourself.
 
 ---
 
@@ -268,11 +268,6 @@ Expected output:
 [Phase 4] Adaptive rule evolution...
 [Phase 5] Dynamic weight fusion reasoning...
 ============================================================
-TKG-LPEHD Results (ICEWS14):
-  MRR    = 0.453
-  Hit@1  = 0.382
-  Hit@10 = 0.663
-============================================================
 ```
 
 ### Case Study Evaluation Only
@@ -350,32 +345,6 @@ python main.py --dataset ICEWS14 --neo4j
 ---
 
 ## Reproducing Paper Results
-
-### Table 5: Performance Comparison
-
-```bash
-for ds in ICEWS14 ICEWS18 MHAES; do
-    python main.py --dataset $ds
-done
-```
-
-### Table 6: Computational Time Cost
-
-```bash
-# Run with profiling
-python main.py --dataset ICEWS14 2>&1 | tee timing.log
-grep -E "(Phase|elapsed|seconds)" timing.log
-```
-
-### Table 7: Ablation Study
-
-```bash
-for mode in "" "w/o G" "w/o T" "w/o E"; do
-    [ -z "$mode" ] && label="full" || label="$mode"
-    echo "=== $label ==="
-    TKG_ABLATION="$mode" python main.py --dataset ICEWS14 | tail -1
-done
-```
 
 ### Figure 4: Time Complexity Plot
 
