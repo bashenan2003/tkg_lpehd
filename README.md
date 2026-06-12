@@ -344,30 +344,6 @@ python main.py --dataset ICEWS14 --neo4j
 
 ---
 
-## Reproducing Paper Results
-
-### Figure 4: Time Complexity Plot
-
-```bash
-# Run on different dataset scales (use subset sampling)
-python main.py --dataset ICEWS14    # ~93K quads
-python main.py --dataset ICEWS18    # ~469K quads
-```
-
-### Figure 5: Temporal Validity Across Time Spans
-
-Results are generated automatically during the standard pipeline run (Section 5.5). Check the output from Phase 2 validity assessment and Section 5.5 logging.
-
-### Case Study Rule Evaluation (Section 4.6.2)
-
-```bash
-cd output
-python eval_case_rules_v2.py
-```
-
-This standalone script computes Hit@1, Hit@10, MRR, and Conditional Accuracy for all three case-study rules against the actual ICEWS14 and MHAES datasets.
-
----
 
 ## Configuration Reference
 
